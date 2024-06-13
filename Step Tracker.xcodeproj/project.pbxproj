@@ -23,6 +23,7 @@
 		C96B04422C18905600C093A0 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96B04412C18905600C093A0 /* HealthKitManager.swift */; };
 		C9A779E22C1AD8B4009962D8 /* WeightLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A779E12C1AD8B4009962D8 /* WeightLineChart.swift */; };
 		C9A779E52C1ADAA2009962D8 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A779E42C1ADAA2009962D8 /* MockData.swift */; };
+		C9A779E72C1AED26009962D8 /* WeightDiffBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A779E62C1AED26009962D8 /* WeightDiffBarChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		C96B04412C18905600C093A0 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		C9A779E12C1AD8B4009962D8 /* WeightLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightLineChart.swift; sourceTree = "<group>"; };
 		C9A779E42C1ADAA2009962D8 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		C9A779E62C1AED26009962D8 /* WeightDiffBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightDiffBarChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				C93926252C19A04300FCC098 /* StepBarChart.swift */,
 				C93926352C19DC0A00FCC098 /* StepPieChart.swift */,
 				C9A779E12C1AD8B4009962D8 /* WeightLineChart.swift */,
+				C9A779E62C1AED26009962D8 /* WeightDiffBarChart.swift */,
 				C939262B2C19A56E00FCC098 /* ChartMath.swift */,
 				C939262D2C19A5B600FCC098 /* ChartDataTypes.swift */,
 			);
@@ -235,6 +238,7 @@
 				C96B042F2C184B2000C093A0 /* Step_TrackerApp.swift in Sources */,
 				C96B04422C18905600C093A0 /* HealthKitManager.swift in Sources */,
 				C96B043F2C188BB300C093A0 /* HealthKitPermissionPrimingView.swift in Sources */,
+				C9A779E72C1AED26009962D8 /* WeightDiffBarChart.swift in Sources */,
 				C939262C2C19A56E00FCC098 /* ChartMath.swift in Sources */,
 				C93926242C1986C300FCC098 /* HealthMetric.swift in Sources */,
 				C939262E2C19A5B600FCC098 /* ChartDataTypes.swift in Sources */,
