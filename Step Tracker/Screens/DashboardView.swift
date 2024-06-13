@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-enum HealthMetricsContext: CaseIterable, Identifiable {
+enum HealthMetricContext: CaseIterable, Identifiable {
     case steps, weight
     var id: Self { self }
     
@@ -27,7 +27,7 @@ struct DashboardView: View {
     @Environment(HealthKitManager.self) private var hkManager
     @AppStorage("hasSeenPermissionPriming") private var hasSeenPermissionPriming = false
     @State private var isShowingPermissionPrimingSheet = false
-    @State private var selectedStat: HealthMetricsContext = .steps
+    @State private var selectedStat: HealthMetricContext = .steps
     var isSteps: Bool { selectedStat == .steps }
     
     var body: some View {
@@ -35,24 +35,31 @@ struct DashboardView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     Picker("Selected Stat", selection: $selectedStat) {
-                        ForEach(HealthMetricsContext.allCases) {
+                        ForEach(HealthMetricContext.allCases) {
                             Text($0.title)
                         }
                     }
                     .pickerStyle(.segmented)
                     
-                    StepBarChart(selectedStat: selectedStat, chartData: hkManager.stepData)
-                    StepPieChart(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                    switch selectedStat {
+                    case .steps:
+                        StepBarChart(selectedStat: selectedStat, chartData: hkManager.stepData)
+                        StepPieChart(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                    case .weight:
+                        WeightLineChart(selectedStat: selectedStat, chartData: hkManager.weightData)
+                        WeightDiffBarChart(chartData: ChartMath.averageDailyWeightDiffs(for: hkManager.weightDiffData))
+                    }
                 }
             }
             .padding()
             .task {
                 await hkManager.fetchStepCount()
                 await hkManager.fetchWeights()
+                await hkManager.fetchWeightForDifferentials()
                 isShowingPermissionPrimingSheet = !hasSeenPermissionPriming
             }
             .navigationTitle("Dashboard")
-            .navigationDestination(for: HealthMetricsContext.self) { metric in
+            .navigationDestination(for: HealthMetricContext.self) { metric in
                 HealthDataListView(metric: metric)
             }
             .sheet(isPresented: $isShowingPermissionPrimingSheet, onDismiss: {
@@ -63,8 +70,6 @@ struct DashboardView: View {
         }
         .tint(isSteps ? .pink : .indigo)
     }
-    
-    
 }
 
 #Preview {
