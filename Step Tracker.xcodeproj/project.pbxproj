@@ -125,9 +125,9 @@
 		C96B042D2C184B2000C093A0 /* Step Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				C9A779E32C1ADA81009962D8 /* Utilities */,
 				C96B04402C188EC600C093A0 /* Step Tracker.entitlements */,
 				C96B042E2C184B2000C093A0 /* Step_TrackerApp.swift */,
+				C9A779E32C1ADA81009962D8 /* Utilities */,
 				C939262A2C19A27500FCC098 /* Managers */,
 				C93926292C19A26E00FCC098 /* Model */,
 				C93926282C19A24900FCC098 /* Charts */,
