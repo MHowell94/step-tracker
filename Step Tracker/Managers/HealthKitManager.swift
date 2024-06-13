@@ -61,6 +61,7 @@ import Observation
         } catch {
             
         }
+    }
         
         
         func fetchWeightForDifferentials() async {
@@ -106,4 +107,3 @@ import Observation
         //        print("✅ Dummy Data sent up")
         //    }
     }
-}
