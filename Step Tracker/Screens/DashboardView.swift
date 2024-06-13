@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-enum HealthMetricsContext: CaseIterable, Identifiable {
+enum HealthMetricContext: CaseIterable, Identifiable {
     case steps, weight
     var id: Self { self }
     
@@ -27,7 +27,7 @@ struct DashboardView: View {
     @Environment(HealthKitManager.self) private var hkManager
     @AppStorage("hasSeenPermissionPriming") private var hasSeenPermissionPriming = false
     @State private var isShowingPermissionPrimingSheet = false
-    @State private var selectedStat: HealthMetricsContext = .steps
+    @State private var selectedStat: HealthMetricContext = .steps
     var isSteps: Bool { selectedStat == .steps }
     
     var body: some View {
@@ -35,7 +35,7 @@ struct DashboardView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     Picker("Selected Stat", selection: $selectedStat) {
-                        ForEach(HealthMetricsContext.allCases) {
+                        ForEach(HealthMetricContext.allCases) {
                             Text($0.title)
                         }
                     }
@@ -52,7 +52,7 @@ struct DashboardView: View {
                 isShowingPermissionPrimingSheet = !hasSeenPermissionPriming
             }
             .navigationTitle("Dashboard")
-            .navigationDestination(for: HealthMetricsContext.self) { metric in
+            .navigationDestination(for: HealthMetricContext.self) { metric in
                 HealthDataListView(metric: metric)
             }
             .sheet(isPresented: $isShowingPermissionPrimingSheet, onDismiss: {

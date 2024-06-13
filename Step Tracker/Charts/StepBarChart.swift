@@ -12,7 +12,7 @@ struct StepBarChart: View {
     
     @State private var rawSelectedDate: Date?
     
-    var selectedStat: HealthMetricsContext
+    var selectedStat: HealthMetricContext
     var chartData: [HealthMetric]
     
     var selectedHealthMetric: HealthMetric? {
@@ -113,5 +113,5 @@ struct StepBarChart: View {
 }
 
 #Preview {
-    StepBarChart(selectedStat: .steps, chartData: HealthMetric.mockData)
+    StepBarChart(selectedStat: .steps, chartData: MockData.steps)
 }
