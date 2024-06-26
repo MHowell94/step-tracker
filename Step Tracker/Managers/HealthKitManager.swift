@@ -27,7 +27,7 @@ enum STError: Error {
     var weightDiffData: [HealthMetric] = []
     
     func fetchStepCount() async throws {
-        
+         
         guard store.authorizationStatus(for: HKQuantityType(.stepCount)) != .notDetermined else {
             throw STError.authNotDetermined
         }
