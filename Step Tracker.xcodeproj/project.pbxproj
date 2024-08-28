@@ -177,8 +177,8 @@
 		C97611C42C7F65DB00880F75 /* Chart Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				C968E5912C5A5762000BBA71 /* ChartContainer.swift */,
 				C968E5932C5A6461000BBA71 /* ChartEmptyView.swift */,
+				C968E5912C5A5762000BBA71 /* ChartContainer.swift */,
 				C96CF2D62C63BE15007A6FC5 /* ChartAnnotationView.swift */,
 			);
 			path = "Chart Custom Views";
