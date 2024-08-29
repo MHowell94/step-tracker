@@ -10,10 +10,18 @@ import Algorithms
 
 struct ChartHelper {
     
+    /// Converts data from HealthKit to chart readable data
+    /// - Parameter data: Value from HealthKit
+    /// - Returns: Date and Value. Example: Visual chart representation of the data on a given date
     static func convert(data: [HealthMetric]) -> [DateValueChartData] {
         data.map { .init(date: $0.date, value: $0.value) }
     }
     
+    /// Checks to see if date is selected.
+    /// - Parameters:
+    ///   - data: Date
+    ///   - selectedDate: Optional to see if date is selected, if not do nothing
+    /// - Returns: SelectedDate
     static func parseSelectedData(from data: [DateValueChartData], in selectedDate: Date?) -> DateValueChartData? {
         guard let selectedDate else { return nil }
         return data.first {
@@ -21,6 +29,9 @@ struct ChartHelper {
         }
     }
     
+    /// Calculates average steps for each day of the week. Example: If Saturday is your busiest day of walking, it will be the highest average number.
+    /// - Parameter metric: Day of the week
+    /// - Returns: Average step count for each day of the week.
     static func averageWeekdayCount(for metric: [HealthMetric]) -> [DateValueChartData] {
         let sortedByWeekday = metric.sorted(using: KeyPathComparator(\.date.weekdayInt))
         let weekdayArray = sortedByWeekday.chunked { $0.date.weekdayInt == $1.date.weekdayInt }
@@ -38,6 +49,10 @@ struct ChartHelper {
         return weekdayChartData
     }
     
+    /// Shows the average daily weight change based on the day before.
+    ///Example: 157.2lbs on Monday, 158lbs on Tuesday would mean "+0.8" will be shown on Tuesday column.
+    /// - Parameter weights: Weight value for any given day pulled from HealthKit.
+    /// - Returns: Difference in weight compared to the previous day.
     static func averageDailyWeightDiffs(for weights: [HealthMetric]) -> [DateValueChartData] {
         var diffValues: [(date: Date, value: Double)] = []
         
